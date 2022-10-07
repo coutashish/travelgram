@@ -1,0 +1,107 @@
+<div class="container rounded bg-white mt-5">
+  
+    <div class="row">
+        <div class="col-md-4 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" [src]="picture" width="90">
+                <span class="font-weight-bold">{{name}}</span><span class="text-black-50">{{email}}</span>
+                <span>{{country}}</span>
+                <span class="text-white">.</span>
+                <span class="text-white">.</span>
+                <span class="text-white">.</span>
+                <button (click)="onDelete()" class="btn btn-danger">Delete My Account</button>
+            </div>
+
+        </div>
+        <div class="col-md-8">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="d-flex flex-row align-items-center back"><i class="fa fa-long-arrow-left mr-1 mb-1"></i>
+                        <h6 [routerLink]="['/profile']">Back </h6>
+                    </div>
+                    <h6 class="text-right">Edit Profile</h6>
+                </div>
+               
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+  
+                <!-- imageeee -->
+                <div>
+                    <!-- image picker -->
+                    <div class="text-right">
+                        Profile Picture
+                      <label for='imagepicker' class='btn btn-dark 'style="margin-left: 75px;">
+                        <!-- <img width="150" [src]="picture" alt='' class='profile' /> -->
+                        Select
+                      </label>
+                      <div >
+                      <input type='file' name='image' id='imagepicker' accept='image/*' multiple={false}
+                        (change)="uploadFile($event)" class='hidden' hidden   />
+                      </div>
+                    </div>
+      
+                    <div class="text-info text-center" [hidden]="!uploadPercent || uploadPercent == 100">uploading
+                      {{uploadPercent | number:'1.0-0'}} %
+                      of 100% <br> Please wait a little... </div>
+                    <div class="text-success text-uppercase text-center mb-3" *ngIf="uploadPercent == 100">
+                      Upload finished
+                    </div>
+      
+                  </div>
+                <!-- imageeee -->
+    
+                <div class="form-group row">
+                  <label for="email" class="col-sm-3 col-form-label">Name</label>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" id="name" name="name" placeholder="Enter Name" [value]="name" ngModel
+                      required />
+                  </div>
+                </div>
+    
+    
+                <div class="form-group row">
+                  <label for="email" class="col-sm-3 col-form-label">Email</label>
+                  <div class="col-sm-9">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" [value]="email" ngModel
+                      required />
+                  </div>
+                </div>
+    
+               
+    
+    
+                <div class="form-group row">
+                  <label for="email" class="col-sm-3 col-form-label">Instagram name</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="username" name="username"
+                      placeholder="Enter your handle of instagram" [value]="instaUserName" ngModel required />
+                  </div>
+                </div>
+    
+                <div class="form-group row">
+                  <label for="email" class="col-sm-3 col-form-label">Country</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="country" name="country" placeholder="Your Country"[value]="country" ngModel
+                      required />
+                  </div>
+                </div>
+    
+                <div class="form-group row">
+                  <label for="email" class="col-sm-3 col-form-label">bio</label>
+                  <div class="col-sm-9">
+                    <textarea type="text" class="form-control" id="bio" name="bio" placeholder="some bio about you" [value]="bio"ngModel
+                      required></textarea>
+                  </div>
+                </div>
+    
+                <div class=" text-center">
+                  <button class="btn btn-primary " type="submit" >
+                    Save Changes
+                  </button>
+                </div>
+    
+              </form>
+        </div>
+        </div>
+    </div>
+
+</div>

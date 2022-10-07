@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+    <a class="navbar-brand" [routerLink]="['/']">
+      <img src="../../../assets/travelgram_icon.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Travelgram
+    </a> <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <!-- if the user is present then printing email -->
+        <!-- <div *ngIf="email" class="navbar-text float-left">
+          {{email}} </div> -->
+        <a class="nav-item nav-link" *ngIf="email" [routerLink]="['/']">Home</a>
+        <!-- conditionally rendering links  -->
+        <a class="nav-item nav-link" *ngIf="!email" [routerLink]="['/signin']" routerLinkActive="active">Sign In</a>
+        <a class="nav-item nav-link" *ngIf="!email" [routerLink]="['/signup']" routerLinkActive="active">Sign Up</a>
+        <a class="nav-item nav-link" *ngIf="email" [routerLink]="['/profile']" routerLinkActive="active">My Profile</a>
+  
+        <!-- <a class="nav-item nav-link text-danger" *ngIf="email" (click)='handleSignOut()'>Log Out</a> -->
+  
+        <a class="nav-item nav-link btn btn-warning text-primary"   style=" margin-left: 810px" *ngIf="email" [routerLink]="['/addpost']"
+          routerLinkActive="active">
+          New Post </a>
+         
+          
+       
+       <!-- ------------------------------------------------------ -->
+       <div class="dropdown "*ngIf="email" style=" margin-left: 50px">
+      
+        <a class="dropbtn"><img [src]="picture" width="40" height="40" class="d-inline-block align-top rounded-circle" alt=""
+          ></a>
+        <div class="dropdown-content">
+          <div *ngIf="name" class="navbar-text  text-dark text-center text-justify" >
+            {{name|uppercase}} </div>
+            
+         <a class="navbar-text text-dark text-center text-justify" *ngIf="email" [routerLink]="['/profile']" routerLinkActive="active">My Profile</a>
+         <a class="navbar-text text-dark text-center text-justify" *ngIf="email" [routerLink]="['/editprofile']" routerLinkActive="active">Settings</a>
+
+          <a class="btn btn-outline-danger btn-sm" *ngIf="email" (click)='handleSignOut()'>Log Out</a>
+         
+        </div>
+      </div>
+       <!-- ------------------------------------------------------ -->
+      </div>
+  
+    </div>
+  </nav>
